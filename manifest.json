@@ -4,6 +4,12 @@
     "description": "Search for previous entries for the current URL on Hacker News",
     "version": "1.0",
     "permissions": ["activeTab", "storage"],
+    "icons": {
+        "16": "./icons/hn-logo-16x16.png",
+        "32": "./icons/hn-logo-32x32.png",
+        "48": "./icons/hn-logo-48x48.png",
+        "128": "./icons/hn-logo-128x128.png"
+    },
     "action": {
         "default_popup": "popup.html",
         "default_title": "Search on Hacker News"

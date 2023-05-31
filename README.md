@@ -2,6 +2,43 @@
 
 HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup.
 
+## History
+
+Since i became a user of hackernews ( like ten or eleven years ago ) i used a bookmarklet to see if the URL i am browsing has already been submited to hackernews:
+
+```javascript
+(function() {
+    // create a new XMLHttpRequest object
+    var request = new XMLHttpRequest();
+    
+    // initialize a new request, using the GET method
+    request.open("GET", "https://hn.algolia.com/api/v1/search?query=" + encodeURIComponent(location.href), true);
+    
+    // define the state change callback
+    request.onreadystatechange = function() {
+        // check the readyState and status
+        if(request.readyState == 4 && request.status == 200) {
+            // parse the response text
+            var response = JSON.parse(request.responseText);
+            
+            // check the number of hits
+            if(response.nbHits > 0) {
+                // redirect to the first hit
+                location.href = "https://news.ycombinator.com/item?id=" + response.hits[0].objectID;
+            } else {
+                // alert the user that the URL has not been submitted yet
+                alert("this url has not been submitted yet");
+            }
+        }
+    };
+    
+    // send the request
+    request.send();
+})();
+```
+
+ Due to some CSP and CORS nonsense a lot of sites have been breaking this script, looking for solutions i found that the only way to bypass that is using a chrome extension ( A Browser extension, but i am a chrome user ), so that's what i did!
+
 ## Features
 
 - Search for the current URL on Hacker News.
