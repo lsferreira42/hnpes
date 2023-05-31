@@ -4,7 +4,7 @@ HNPES allows you to search for the current URL on Hacker News and view the top r
 
 ## History
 
-Since i became a user of hackernews ( like ten or eleven years ago ) i used a bookmarklet to see if the URL i am browsing has already been submited to hackernews:
+Since i became a user of hackernews ( like ten or eleven years ago ) i used a bookmarklet to see if the URL i am browsing has already been submitted to hackernews:
 
 ```javascript
 (function() {
