@@ -35,6 +35,11 @@ Since i became a user of hackernews ( like ten or eleven years ago ) i used a bo
 - Display the top results from Hacker News in the extension's popup.
 - Configurable number of results to display.
 - Configurable number of pagination pages to follow.
+- Show the number of comments in each post
+- Show the date of creation of each post
+- A debug feature enabled by the config
+- If the link was never posted on hackernews, a option to post there will appear
+- And in any case, you can also share it on twitter and reddit
 
 ## Installation
 
@@ -59,6 +64,7 @@ The extension allows you to configure the following options:
 
 - **Number of results to show**: Set the number of results to display in the popup. Default is 3.
 - **Number of pagination pages to follow**: Set the number of pagination pages to fetch from Hacker News. Default is 1.
+- **Debug function**: Check it for the extension to post the response from algolia to http://localhost:8080/debug
 
 To configure these options:
 
