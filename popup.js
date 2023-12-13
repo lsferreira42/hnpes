@@ -108,7 +108,7 @@ chrome.runtime.sendMessage({ message: 'getTabUrl' }, response => {
                                     link.target = '_blank';
 
                                     let details = document.createElement('span');
-                                    details.innerText = ` - Posted on: ${formatDate(result.created_at)} - Comments: ${result.num_comments || 'N/A'}`;
+                                    details.innerText = ` -(${result.num_comments || 'N/A'}) - ${formatDate(result.created_at)}`;
 
                                     let container = document.createElement('div');
                                     container.appendChild(link);
@@ -120,8 +120,9 @@ chrome.runtime.sendMessage({ message: 'getTabUrl' }, response => {
                             page++;
                             if (count < resultsCount) {
                                 fetchPage();
+                            } else {
+                                showAdditionalSharingOptions();
                             }
-                            showAdditionalSharingOptions();
                         } else {
                             resultsDiv.innerText = 'This URL was never submitted.';
 
