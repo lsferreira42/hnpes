@@ -1,5 +1,8 @@
 # HNPES - Hacker News Previous Entry Search
 
+> ⚠️ **Note**: This extension is currently pending approval on the Chrome Web Store. We'll update this notice with the store link once it's approved.
+
+
 *Procurando um readme em [Português](README.pt-BR.md)* ?
 
 HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup.

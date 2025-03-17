@@ -8,10 +8,11 @@ NAME := hnpes
 .PHONY: release
 release: build
 	@echo "Creating GitHub release v$(VERSION)..."
+	@mv ./dist/hnpes-v$(VERSION).zip ./dist/hnpes-v$(VERSION).crx
 	@gh release create v$(VERSION) \
 		--title "v$(VERSION)" \
 		--notes "Release v$(VERSION)" \
-		./dist/hnpes-v$(VERSION).zip
+		./dist/hnpes-v$(VERSION).crx
 	@echo "✓ Release v$(VERSION) created successfully"
 
 
