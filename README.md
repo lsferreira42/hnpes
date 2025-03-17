@@ -1,6 +1,6 @@
 # HNPES - Hacker News Previous Entry Search
 
-*Procurando um readme em [Português](README.pt-BR.md)*
+*Procurando um readme em [Português](README.pt-BR.md)* ?
 
 HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup.
 

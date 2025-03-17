@@ -4,6 +4,17 @@
 VERSION := $(shell grep -o '"version": "[^"]*"' manifest.json | cut -d'"' -f4)
 NAME := hnpes
 
+# Create GitHub release with built extension
+.PHONY: release
+release: build
+	@echo "Creating GitHub release v$(VERSION)..."
+	@gh release create v$(VERSION) \
+		--title "v$(VERSION)" \
+		--notes "Release v$(VERSION)" \
+		./dist/hnpes-v$(VERSION).zip
+	@echo "✓ Release v$(VERSION) created successfully"
+
+
 # Main build target
 .PHONY: build
 build: clean
@@ -75,14 +86,14 @@ bump-version:
 # Show help
 .PHONY: help
 help:
-	@echo "HNPES Makefile Commands:"
+	@echo "Available commands:"
 	@echo ""
-	@echo "  make build       - Build a ZIP file for Chrome Web Store (excludes documentation)"
-	@echo "  make dist        - Create a distribution package (includes READMEs)"
-	@echo "  make clean       - Clean the dist directory"
-	@echo "  make bump-version TYPE=patch|minor|major - Bump extension version"
-	@echo "                    (default is patch if TYPE is not specified)"
-	@echo "  make help        - Show this help message"
+	@echo "  build         - Create extension ZIP file for Chrome Web Store submission"
+	@echo "  dist         - Create distribution package including README files"
+	@echo "  clean        - Remove dist directory"
+	@echo "  bump-version - Bump version number (TYPE=patch|minor|major)"
+	@echo "                  (default is patch if TYPE is not specified)"
+	@echo "  release      - Create GitHub release with built extension"
 	@echo ""
 	@echo "Current version: $(VERSION)"
 
