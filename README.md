@@ -1,5 +1,7 @@
 # HNPES - Hacker News Previous Entry Search
 
+*Procurando um readme em [Português](README.pt-BR.md)*
+
 HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup.
 
 ## History
@@ -31,15 +33,44 @@ Since i became a user of hackernews ( like ten or eleven years ago ) i used a bo
 
 ## Features
 
-- Search for the current URL on Hacker News.
-- Display the top results from Hacker News in the extension's popup.
-- Configurable number of results to display.
-- Configurable number of pagination pages to follow.
-- Show the number of comments in each post
-- Show the date of creation of each post
-- A debug feature enabled by the config
-- If the link was never posted on hackernews, a option to post there will appear
-- And in any case, you can also share it on twitter and reddit
+- Search for the current URL on Hacker News
+- Display the top results from Hacker News in the extension's popup
+- Detailed result information:
+  - Number of comments in each post
+  - Date of post creation
+  - Post author
+  - Points/score of each post
+- Share content on multiple platforms:
+  - Hacker News
+  - Twitter/X
+  - Reddit
+  - LinkedIn
+  - Facebook
+  - Bluesky
+  - Copy URL to clipboard
+  - Add custom sharing platforms
+- Sort results by:
+  - Date
+  - Comments
+  - Score
+- UI Improvements:
+  - Dark mode
+  - Modern, clean interface
+  - Responsive design
+- Customization options:
+  - Configure which share buttons to display
+  - Create custom share buttons for any platform
+  - Set the number of results to display
+  - Set the number of pagination pages to follow
+- Privacy features:
+  - Privacy mode to disable caching
+  - Option to clear local data
+- Multilingual support:
+  - English
+  - Portuguese
+  - Spanish
+- Advanced caching for better performance
+- Improved URL matching for better results
 
 ## Installation
 
@@ -55,23 +86,45 @@ Since i became a user of hackernews ( like ten or eleven years ago ) i used a bo
 1. Navigate to a webpage you want to search on Hacker News.
 2. Click on the extension icon in the Chrome toolbar to open the popup.
 3. The extension will automatically fetch the top results from Hacker News related to the current URL.
-4. The results will be displayed in the popup.
-5. Click on a result to open it in a new tab.
+4. Results will be displayed in the popup with details like points, author, and comments.
+5. Use the provided buttons to share the current page on various platforms.
+6. Click on a result to open it in a new tab.
 
 ## Configuration
 
 The extension allows you to configure the following options:
 
-- **Number of results to show**: Set the number of results to display in the popup. Default is 3.
-- **Number of pagination pages to follow**: Set the number of pagination pages to fetch from Hacker News. Default is 1.
-- **Debug function**: Check it for the extension to post the response from algolia to http://localhost:8080/debug
+### Search Settings
+- **Number of results to show**: Set the number of results to display in the popup. Default is 5.
+- **Number of pagination pages to follow**: Set the number of pagination pages to fetch from Hacker News. Default is 10.
+- **Debug function**: Enable the extension to post the response from Algolia to http://localhost:8080/debug.
+
+### Appearance
+- **Dark Mode**: Toggle between light and dark themes.
+
+### Privacy & Security
+- **Privacy Mode**: Disable caching of search results.
+- **Clear Local Data**: Remove all cached search results.
+
+### Language
+- Choose between English, Portuguese, or Spanish for the user interface.
+
+### Share Buttons
+- Enable or disable individual share buttons (Hacker News, Twitter, Reddit, LinkedIn, Facebook, Bluesky, Copy URL).
+
+### Custom Share Options
+- Add your own share buttons for any platform by specifying:
+  - Platform name
+  - Share URL template (with URL and title placeholders)
+  - Button color
+  - Enable/disable option
 
 To configure these options:
 
 1. Click on the extension icon in the Chrome toolbar to open the popup.
-2. Click on the gear icon in the top right corner to open the options page.
+2. Click the "Options" button to open the options page.
 3. Adjust the desired settings.
-4. Click the "Save" button to save the settings.
+4. Click the "Save All Settings" button to save your preferences.
 
 ## Contributing
 
@@ -83,5 +136,5 @@ This extension uses the [Algolia Search API](https://hn.algolia.com/api) to sear
 
 ## Disclaimer
 
-This project is not affiliated with or endorsed by Hacker News or Algolia.
+This project is not affiliated with or endorsed by Hacker News, Algolia, or any of the social media platforms referenced.
 
