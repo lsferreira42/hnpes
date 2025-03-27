@@ -1,7 +1,6 @@
 # HNPES - Hacker News Previous Entry Search
 
-> ⚠️ **Aviso**: Esta extensão está atualmente aguardando aprovação na Chrome Web Store. Atualizaremos este aviso com o link da loja assim que for aprovada.
-
+> ⚠️ **Aviso**: Esta extensão já está disponível na Chrome Web Store! [Baixe aqui](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
 
 O HNPES permite pesquisar a URL atual no Hacker News e visualizar os principais resultados diretamente no popup da extensão.
 

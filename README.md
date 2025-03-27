@@ -1,6 +1,6 @@
 # HNPES - Hacker News Previous Entry Search
 
-> ⚠️ **Note**: This extension is currently pending approval on the Chrome Web Store. We'll update this notice with the store link once it's approved.
+> ⚠️ **Note**: This extension is now available on the Chrome Web Store! [Get it here](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
 
 
 *Procurando um readme em [Português](README.pt-BR.md)* ?

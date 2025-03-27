@@ -20,5 +20,6 @@
     },
     "host_permissions": [
         "https://hn.algolia.com/*"
-    ]
+    ],
+    "support_url": "https://www.leandrosf.com/projetos/hnpes/"
 }
