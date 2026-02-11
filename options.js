@@ -18,15 +18,25 @@ document.addEventListener('DOMContentLoaded', function () {
             'privacyMode', 
             'language', 
             'customShareOptions',
-            'shareButtons'
+            'shareButtons',
+            'defaultSort',
+            'timeFilter',
+            'cacheTtl',
+            'showBadge',
+            'showPageIndicator'
         ], function(items) {
             document.getElementById('resultsCount').value = items.resultsCount || 5;
             document.getElementById('pagesCount').value = items.pagesCount || 10;
+            document.getElementById('defaultSort').value = items.defaultSort || 'date';
+            document.getElementById('timeFilter').value = items.timeFilter || 'all';
+            document.getElementById('cacheTtl').value = items.cacheTtl !== undefined ? items.cacheTtl : 0;
             
             // Configurações básicas
             document.getElementById('debug').checked = items.debug || false;
             document.getElementById('darkMode').checked = items.darkMode || false;
             document.getElementById('privacyMode').checked = items.privacyMode || false;
+            document.getElementById('showBadge').checked = items.showBadge !== false;
+            document.getElementById('showPageIndicator').checked = items.showPageIndicator === true;
             
             // Idioma
             const languageSelect = document.getElementById('language');
@@ -177,6 +187,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const darkMode = document.getElementById('darkMode').checked;
         const privacyMode = document.getElementById('privacyMode').checked;
         const language = document.getElementById('language').value;
+        const defaultSort = document.getElementById('defaultSort').value;
+        const timeFilter = document.getElementById('timeFilter').value;
+        const cacheTtl = parseInt(document.getElementById('cacheTtl').value, 10) || 0;
+        const showBadge = document.getElementById('showBadge').checked;
+        const showPageIndicator = document.getElementById('showPageIndicator').checked;
         
         // Opções de botões de compartilhamento
         const shareButtons = {
@@ -208,6 +223,11 @@ document.addEventListener('DOMContentLoaded', function () {
             'darkMode': darkMode,
             'privacyMode': privacyMode,
             'language': language,
+            'defaultSort': defaultSort,
+            'timeFilter': timeFilter,
+            'cacheTtl': cacheTtl,
+            'showBadge': showBadge,
+            'showPageIndicator': showPageIndicator,
             'customShareOptions': customShareOptions,
             'shareButtons': shareButtons
         }, function() {

@@ -231,6 +231,23 @@
         <label for="pagesCount">Number of pages to follow:</label>
         <input type="number" id="pagesCount" min="1"><br>
         
+        <label for="defaultSort">Default sort:</label>
+        <select id="defaultSort">
+            <option value="date">Date</option>
+            <option value="comments">Comments</option>
+            <option value="score">Score</option>
+        </select><br>
+        
+        <label for="timeFilter">Time filter:</label>
+        <select id="timeFilter">
+            <option value="all">All time</option>
+            <option value="1y">Last year</option>
+            <option value="5y">Last 5 years</option>
+        </select><br>
+        
+        <label for="cacheTtl">Cache TTL (minutes, 0 = use until cleared):</label>
+        <input type="number" id="cacheTtl" min="0" value="0"><br>
+        
         <label for="debug">Enable Debugging:</label>
         <input type="checkbox" id="debug"><br>
     </div>
@@ -239,6 +256,13 @@
         <h2>Appearance</h2>
         <label for="darkMode">Dark Mode:</label>
         <input type="checkbox" id="darkMode"><br>
+        
+        <label for="showBadge">Show submission count on extension icon:</label>
+        <input type="checkbox" id="showBadge" checked><br>
+        
+        <label for="showPageIndicator">Show "Discussed on HN" banner on submitted pages:</label>
+        <input type="checkbox" id="showPageIndicator"><br>
+        <p class="small-text">When enabled, a small banner appears at the top of pages that were submitted to Hacker News. Off by default.</p>
     </div>
     
     <div class="option-group">
