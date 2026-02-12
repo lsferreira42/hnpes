@@ -1,11 +1,12 @@
 # HNPES - Hacker News Previous Entry Search
 
-> ⚠️ **Note**: This extension is now available on the Chrome Web Store! [Get it here](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
+> **Download:** Available for Chrome and Firefox!
+> - **[Chrome Web Store](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)** 
+> - **[Firefox Add-ons](https://addons.mozilla.org/pt-BR/firefox/addon/hnpes-hackernews-search/)**
 
+*Looking for a readme in [Portuguese](README.pt-BR.md)?*
 
-*Procurando um readme em [Português](README.pt-BR.md)* ?
-
-HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup.
+HNPES allows you to search for the current URL on Hacker News and view the top results directly from the extension's popup. Works on **Chrome** and **Firefox**.
 
 ## History
 
@@ -32,7 +33,7 @@ Since i became a user of hackernews ( like ten or eleven years ago ) i used a bo
 })();
 ```
 
- Due to some CSP and CORS nonsense a lot of sites have been breaking this script, looking for solutions i found that the only way to bypass that is using a chrome extension ( A Browser extension, but i am a chrome user ), so that's what i did!
+ Due to some CSP and CORS nonsense a lot of sites have been breaking this script. Looking for solutions, I found that the only way to bypass that was using a browser extension — so that's what I did! HNPES now works on both Chrome and Firefox.
 
 ## Features
 
@@ -88,17 +89,28 @@ Since i became a user of hackernews ( like ten or eleven years ago ) i used a bo
 
 ## Installation
 
-1. Clone or download this repository to your local machine.
-2. Open Google Chrome and navigate to `chrome://extensions`.
-3. Enable "Developer mode" using the toggle switch in the top right corner.
-4. Click on the "Load unpacked" button.
-5. Select the folder containing the extension files.
-6. The extension should now be installed and visible in the list of installed extensions.
+### From the stores (recommended)
+
+- **Chrome:** [Install from Chrome Web Store](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
+- **Firefox:** [Install from Firefox Add-ons](https://addons.mozilla.org/pt-BR/firefox/addon/hnpes-hackernews-search/)
+
+### Manual installation (development)
+
+**Chrome:**
+1. Clone or download this repository.
+2. Open `chrome://extensions` and enable "Developer mode".
+3. Click "Load unpacked" and select the project folder.
+4. For Chrome, ensure you're using `manifest.json` (the default).
+
+**Firefox:**
+1. Run `make build-firefox` to create the Firefox package.
+2. Open `about:debugging` → "This Firefox" → "Load Temporary Add-on".
+3. Select the generated `dist/hnpes-firefox-v*.zip` or the project folder (with `manifest.firefox.json` renamed to `manifest.json`).
 
 ## Usage
 
 1. Navigate to a webpage you want to search on Hacker News (or leave the URL field empty to use the current tab).
-2. Click on the extension icon in the Chrome toolbar to open the popup.
+2. Click on the extension icon in the browser toolbar to open the popup.
 3. The extension will automatically fetch the top results from Hacker News related to the current (or pasted) URL.
 4. **Optional:** Paste a different URL in the "Search URL" field and click **Search** (or press Enter) to search that URL.
 5. Results are displayed in the popup with details like points, author, comments, and an Exact match / Same domain badge.
@@ -142,7 +154,7 @@ The extension allows you to configure the following options:
 
 To configure these options:
 
-1. Click on the extension icon in the Chrome toolbar to open the popup.
+1. Click on the extension icon in the browser toolbar to open the popup.
 2. Click the "Options" button to open the options page.
 3. Adjust the desired settings.
 4. Click the "Save All Settings" button to save your preferences.

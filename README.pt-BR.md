@@ -1,8 +1,12 @@
 # HNPES - Hacker News Previous Entry Search
 
-> ⚠️ **Aviso**: Esta extensão já está disponível na Chrome Web Store! [Baixe aqui](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
+> **Download:** Disponível para Chrome e Firefox!
+> - **[Chrome Web Store](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)** 
+> - **[Firefox Add-ons](https://addons.mozilla.org/pt-BR/firefox/addon/hnpes-hackernews-search/)**
 
-O HNPES permite pesquisar a URL atual no Hacker News e visualizar os principais resultados diretamente no popup da extensão.
+*Procurando o readme em [inglês](README.md)?*
+
+O HNPES permite pesquisar a URL atual no Hacker News e visualizar os principais resultados diretamente no popup da extensão. Funciona no **Chrome** e no **Firefox**.
 
 ## História
 
@@ -29,7 +33,7 @@ Desde que me tornei usuário do Hacker News (há cerca de dez ou onze anos), eu 
 })();
 ```
 
-Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este script. Buscando soluções, descobri que a única maneira de contornar isso era usando uma extensão para navegador (no meu caso, uso o Chrome), então foi o que fiz!
+Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este script. Buscando soluções, descobri que a única maneira de contornar isso era usando uma extensão para navegador — então foi o que fiz! O HNPES agora funciona no Chrome e no Firefox.
 
 ## Funcionalidades
 
@@ -85,17 +89,28 @@ Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este
 
 ## Instalação
 
-1. Clone ou baixe este repositório para sua máquina local.
-2. Abra o Google Chrome e navegue até `chrome://extensions`.
-3. Ative o "Modo desenvolvedor" usando o botão no canto superior direito.
-4. Clique no botão "Carregar sem compactação".
-5. Selecione a pasta contendo os arquivos da extensão.
-6. A extensão agora deve estar instalada e visível na lista de extensões instaladas.
+### Pelas lojas (recomendado)
+
+- **Chrome:** [Instalar pela Chrome Web Store](https://chromewebstore.google.com/detail/hnpes-hacker-news-previou/ndjkjkemnioillnkfeppiocomehgfegi)
+- **Firefox:** [Instalar pela Firefox Add-ons](https://addons.mozilla.org/pt-BR/firefox/addon/hnpes-hackernews-search/)
+
+### Instalação manual (desenvolvimento)
+
+**Chrome:**
+1. Clone ou baixe este repositório.
+2. Abra `chrome://extensions` e ative o "Modo desenvolvedor".
+3. Clique em "Carregar sem compactação" e selecione a pasta do projeto.
+4. Para o Chrome, use o `manifest.json` padrão.
+
+**Firefox:**
+1. Execute `make build-firefox` para criar o pacote Firefox.
+2. Abra `about:debugging` → "Este Firefox" → "Carregar extensão temporária".
+3. Selecione o arquivo `dist/hnpes-firefox-v*.zip` gerado ou a pasta do projeto (com `manifest.firefox.json` renomeado para `manifest.json`).
 
 ## Uso
 
 1. Navegue até uma página que você deseja pesquisar no Hacker News (ou deixe o campo de URL em branco para usar a aba atual).
-2. Clique no ícone da extensão na barra de ferramentas do Chrome para abrir o popup.
+2. Clique no ícone da extensão na barra de ferramentas do navegador para abrir o popup.
 3. A extensão buscará automaticamente os principais resultados do Hacker News relacionados à URL atual (ou colada).
 4. **Opcional:** Cole outra URL no campo "URL para buscar" e clique em **Buscar** (ou Enter) para pesquisar essa URL.
 5. Os resultados são exibidos no popup com detalhes como pontos, autor, comentários e o badge Correspondência exata / Mesmo domínio.
@@ -139,7 +154,7 @@ A extensão permite configurar as seguintes opções:
 
 Para configurar essas opções:
 
-1. Clique no ícone da extensão na barra de ferramentas do Chrome para abrir o popup.
+1. Clique no ícone da extensão na barra de ferramentas do navegador para abrir o popup.
 2. Clique no botão "Opções" para abrir a página de opções.
 3. Ajuste as configurações desejadas.
 4. Clique no botão "Salvar Todas as Configurações" para salvar suas preferências.

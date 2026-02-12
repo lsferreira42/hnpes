@@ -1,7 +1,7 @@
 # Makefile for HNPES Browser Extension (Chrome & Firefox)
 
-# Get version from manifest.json
-VERSION := $(shell grep -o '"version": "[^"]*"' manifest.json | cut -d'"' -f4)
+# Get version from manifest.json (handles "version":"1.0.0" and "version": "1.0.0")
+VERSION := $(shell sed -n 's/.*"version"[^"]*"\([0-9.]*\)".*/\1/p' manifest.json)
 NAME := hnpes
 
 # --- Chrome ---
@@ -99,8 +99,8 @@ bump-version:
 		PATCH=$$((PATCH + 1)); \
 	fi; \
 	NEW_VERSION="$$MAJOR.$$MINOR.$$PATCH"; \
-	sed -i.bak "s/\"version\": \"$(VERSION)\"/\"version\": \"$$NEW_VERSION\"/" manifest.json; \
-	sed -i.bak "s/\"version\": \"$(VERSION)\"/\"version\": \"$$NEW_VERSION\"/" manifest.firefox.json; \
+	sed -i.bak 's#"version"[^"]*"[0-9.]*"#"version":"'$$NEW_VERSION'"#' manifest.json; \
+	sed -i.bak 's#"version"[^"]*"[0-9.]*"#"version":"'$$NEW_VERSION'"#' manifest.firefox.json; \
 	rm -f manifest.json.bak manifest.firefox.json.bak; \
 	echo "✅ Bumped version from $(VERSION) to $$NEW_VERSION"
 
