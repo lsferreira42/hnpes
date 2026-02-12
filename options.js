@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Inicializa tema escuro se configurado
     function initializeTheme() {
-        chrome.storage.sync.get(['darkMode'], function(data) {
+        ext.storage.sync.get(['darkMode'], function(data) {
             if (data.darkMode) {
                 document.body.classList.add('dark-theme');
             }
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Carrega as opções salvas
     function loadOptions() {
-        chrome.storage.sync.get([
+        ext.storage.sync.get([
             'resultsCount', 
             'pagesCount', 
             'debug', 
@@ -164,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Evento para limpar dados locais
     document.getElementById('clearDataButton').addEventListener('click', function() {
         // Limpa os dados de cache da extensão
-        chrome.storage.local.clear(function() {
+        ext.storage.local.clear(function() {
             // Limpa o cache de resultados por meio de uma mensagem para o popup
-            chrome.runtime.sendMessage({ 
+            ext.runtime.sendMessage({ 
                 message: 'clearCache'
             });
             
@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
         
-        // Salva todas as configurações
-        chrome.storage.sync.set({
+        function doSave() {
+            ext.storage.sync.set({
             'resultsCount': resultsCount,
             'pagesCount': pagesCount,
             'debug': debug,
@@ -237,6 +237,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 saveMessage.innerText = '';
             }, 2000);
         });
+        }
+        
+        if (showPageIndicator && ext.permissions) {
+            ext.permissions.contains({ origins: ['<all_urls>'] }).then(function(has) {
+                if (has) {
+                    doSave();
+                    return;
+                }
+                return ext.permissions.request({ origins: ['<all_urls>'] });
+            }).then(function(granted) {
+                if (granted === true) doSave();
+                else if (granted === false) {
+                    document.getElementById('saveMessage').innerText = 'Permission required for "Discussed on HN" banner. Please allow when prompted.';
+                    document.getElementById('showPageIndicator').checked = false;
+                }
+            }).catch(function() {
+                document.getElementById('saveMessage').innerText = 'Could not enable page indicator. Permission was denied.';
+                document.getElementById('showPageIndicator').checked = false;
+            });
+        } else {
+            doSave();
+        }
     });
     
     // Adiciona manipuladores do popup de ajuda

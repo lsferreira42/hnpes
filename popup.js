@@ -13,7 +13,7 @@
     const resultCache = {};
     let currentLanguage = 'en';
 
-    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    ext.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         if (request.message === 'clearCache') {
             Object.keys(resultCache).forEach(function(k) { delete resultCache[k]; });
         }
@@ -202,16 +202,16 @@
         var themeBtn = document.createElement('button');
         themeBtn.className = 'share-button';
         themeBtn.setAttribute('aria-label', translate('darkMode'));
-        chrome.storage.sync.get(['darkMode'], function(d) {
+        ext.storage.sync.get(['darkMode'], function(d) {
             var isDark = d.darkMode;
             themeBtn.textContent = isDark ? translate('lightMode') : translate('darkMode');
             themeBtn.style.backgroundColor = isDark ? '#f8c200' : '#5c6bc0';
             if (isDark) document.body.classList.add('dark-theme');
         });
         themeBtn.addEventListener('click', function() {
-            chrome.storage.sync.get(['darkMode'], function(d) {
+            ext.storage.sync.get(['darkMode'], function(d) {
                 var next = !d.darkMode;
-                chrome.storage.sync.set({ darkMode: next });
+                ext.storage.sync.set({ darkMode: next });
                 document.body.classList.toggle('dark-theme', next);
                 themeBtn.textContent = next ? translate('lightMode') : translate('darkMode');
                 themeBtn.style.backgroundColor = next ? '#f8c200' : '#5c6bc0';
@@ -223,7 +223,7 @@
         optBtn.textContent = translate('optionsButton');
         optBtn.style.backgroundColor = '#6c757d';
         optBtn.setAttribute('aria-label', 'Open extension options');
-        optBtn.addEventListener('click', function() { chrome.runtime.openOptionsPage(); });
+        optBtn.addEventListener('click', function() { ext.runtime.openOptionsPage(); });
         toolbar.appendChild(themeBtn);
         toolbar.appendChild(optBtn);
         return toolbar;
@@ -386,7 +386,7 @@
                     this.classList.add('active');
                     this.setAttribute('aria-pressed', 'true');
                     currentSort = this.dataset.sort;
-                    chrome.storage.sync.set({ defaultSort: currentSort });
+                    ext.storage.sync.set({ defaultSort: currentSort });
                     sortAndDisplay();
                 });
                 sortPanel.appendChild(btn);
@@ -414,7 +414,7 @@
                     this.classList.add('active');
                     this.setAttribute('aria-pressed', 'true');
                     currentTimeFilter = this.dataset.time;
-                    chrome.storage.sync.set({ timeFilter: currentTimeFilter });
+                    ext.storage.sync.set({ timeFilter: currentTimeFilter });
                     page = 0;
                     allResults = [];
                     resultsDiv.querySelectorAll('.result-item').forEach(function(el) { el.remove(); });
@@ -499,7 +499,7 @@
             var panel = document.createElement('div');
             panel.id = 'sharePanel';
             panel.className = 'share-panel';
-            chrome.storage.sync.get(['shareButtons'], function(d) {
+            ext.storage.sync.get(['shareButtons'], function(d) {
                 var shareButtons = d.shareButtons || { hnButton: true, twitterButton: false, redditButton: false, linkedinButton: false, facebookButton: false, blueskyButton: true, copyButton: false };
                 if (shareButtons.hnButton !== false) {
                     var a = document.createElement('a');
@@ -647,7 +647,7 @@
         fetchPage();
     }
 
-    chrome.runtime.sendMessage({ message: 'getTabUrl' }, function(response) {
+    ext.runtime.sendMessage({ message: 'getTabUrl' }, function(response) {
         response = response || {};
         var tabUrl = (response.url || '').trim();
         var tabTitle = response.title || '';
@@ -656,7 +656,7 @@
         var resultsDiv = document.getElementById('results');
         if (customUrl) customUrl.value = tabUrl;
 
-        chrome.storage.sync.get([
+        ext.storage.sync.get([
             'resultsCount', 'pagesCount', 'debug', 'language', 'customShareOptions', 'privacyMode',
             'defaultSort', 'timeFilter', 'cacheTtl'
         ], function(data) {

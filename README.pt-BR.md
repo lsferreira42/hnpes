@@ -33,13 +33,18 @@ Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este
 
 ## Funcionalidades
 
-- Pesquisa a URL atual no Hacker News
+- Pesquisa a URL atual (ou qualquer URL colada) no Hacker News
 - Exibe os principais resultados do Hacker News no popup da extensão
+- **Buscar por URL colada:** Cole uma URL no popup e clique em Buscar (ou Enter) para pesquisar sem estar naquela página
+- **Menu de contexto:** Clique com o botão direito em qualquer link → "Search on Hacker News" → abre uma nova aba com os resultados dessa URL
+- **Badge no ícone:** Opção de exibir no ícone da extensão a quantidade de submissões no HN da página atual (configurável)
+- **Banner "Discussed on HN":** Opção de exibir um banner no topo de páginas que já foram submetidas ao HN, com link para a discussão (desativado por padrão)
 - Informações detalhadas dos resultados:
   - Número de comentários em cada post
   - Data de criação do post
   - Autor do post
   - Pontos/score de cada post
+  - Badge **Correspondência exata** / **Mesmo domínio** em cada resultado
 - Compartilhamento de conteúdo em múltiplas plataformas:
   - Hacker News
   - Twitter/X
@@ -49,19 +54,23 @@ Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este
   - Bluesky
   - Cópia da URL para área de transferência
   - Adição de plataformas de compartilhamento personalizadas
-- Ordenação dos resultados por:
-  - Data
-  - Comentários
-  - Pontuação
+- Ordenação dos resultados por Data, Comentários ou Pontuação (ordenação padrão salva nas opções)
+- **Filtro por tempo:** Restringir resultados a Todo o período, Último ano ou Últimos 5 anos (nas opções e no popup)
 - Melhorias na interface:
   - Modo escuro
   - Interface moderna e limpa
-  - Design responsivo
+  - Popup com rolagem e altura máxima
+  - Spinner de carregamento durante a busca
+  - Botão "Tentar novamente" em caso de erro de rede
 - Opções de personalização:
   - Configuração de quais botões de compartilhamento exibir
   - Criação de botões de compartilhamento personalizados para qualquer plataforma
   - Definição do número de resultados a serem exibidos
   - Definição do número de páginas de paginação a seguir
+  - Ordenação padrão
+  - TTL do cache em minutos (0 = sem expiração)
+  - Exibir ou ocultar badge no ícone da extensão
+  - Exibir ou ocultar banner "Discussed on HN" em páginas submetidas
 - Recursos de privacidade:
   - Modo de privacidade para desativar o cache
   - Opção para limpar dados locais
@@ -69,7 +78,9 @@ Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este
   - Inglês
   - Português
   - Espanhol
-- Cache avançado para melhor desempenho
+- **Confiabilidade:** Validação de URL (sem requisições para `chrome://`, etc.), nova tentativa automática em falha da API (até 3 tentativas)
+- **Acessibilidade:** Labels ARIA e popup utilizável por teclado
+- Cache avançado com TTL opcional para melhor desempenho
 - Correspondência de URL aprimorada para melhores resultados
 
 ## Instalação
@@ -83,12 +94,14 @@ Devido a várias restrições de CSP e CORS, muitos sites estavam quebrando este
 
 ## Uso
 
-1. Navegue até uma página da web que você deseja pesquisar no Hacker News.
+1. Navegue até uma página que você deseja pesquisar no Hacker News (ou deixe o campo de URL em branco para usar a aba atual).
 2. Clique no ícone da extensão na barra de ferramentas do Chrome para abrir o popup.
-3. A extensão buscará automaticamente os principais resultados do Hacker News relacionados à URL atual.
-4. Os resultados serão exibidos no popup com detalhes como pontos, autor e comentários.
-5. Use os botões fornecidos para compartilhar a página atual em várias plataformas.
-6. Clique em um resultado para abri-lo em uma nova aba.
+3. A extensão buscará automaticamente os principais resultados do Hacker News relacionados à URL atual (ou colada).
+4. **Opcional:** Cole outra URL no campo "URL para buscar" e clique em **Buscar** (ou Enter) para pesquisar essa URL.
+5. Os resultados são exibidos no popup com detalhes como pontos, autor, comentários e o badge Correspondência exata / Mesmo domínio.
+6. Use os controles **Período** e **Ordenar** para filtrar e ordenar os resultados. Use os botões de compartilhamento para compartilhar a página.
+7. Clique em um resultado para abri-lo em uma nova aba.
+8. **Menu de contexto:** Clique com o botão direito em qualquer link e escolha "Search on Hacker News" para abrir os resultados desse link em uma nova aba.
 
 ## Configuração
 
@@ -97,10 +110,15 @@ A extensão permite configurar as seguintes opções:
 ### Configurações de Pesquisa
 - **Número de resultados a mostrar**: Defina o número de resultados a serem exibidos no popup. O padrão é 5.
 - **Número de páginas de paginação a seguir**: Defina o número de páginas a buscar do Hacker News. O padrão é 10.
-- **Função de depuração**: Ative para que a extensão envie a resposta da Algolia para http://localhost:8080/debug.
+- **Ordenação padrão**: Ordem padrão dos resultados (Data, Comentários ou Pontuação).
+- **Filtro por tempo**: Restringir resultados a Todo o período, Último ano ou Últimos 5 anos.
+- **TTL do cache (minutos)**: Por quanto tempo manter os resultados em cache (0 = até limpar).
+- **Função de depuração**: Ative para que a extensão envie a resposta da Algolia para http://localhost:8080/debug (apenas quando ativada; erros são ignorados).
 
 ### Aparência
 - **Modo Escuro**: Alterne entre temas claro e escuro.
+- **Mostrar contagem de submissões no ícone da extensão**: Exibir no ícone a quantidade de submissões no HN da página atual.
+- **Mostrar banner "Discussed on HN" em páginas submetidas**: Quando ativado, exibe um pequeno banner no topo de páginas que foram submetidas ao Hacker News (desativado por padrão).
 
 ### Privacidade e Segurança
 - **Modo de Privacidade**: Desative o armazenamento em cache dos resultados de pesquisa.
